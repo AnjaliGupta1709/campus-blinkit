@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import { Header } from "@/components/Header";
 import { Button } from "@/components/ui/button";
@@ -8,8 +8,15 @@ import { Button } from "@/components/ui/button";
 export default function PaymentPage() {
   const router = useRouter();
 
-  const address =
-    JSON.parse(localStorage.getItem("address") || "{}");
+  // ✅ FIX: localStorage safe handling
+  const [address, setAddress] = useState<any>({});
+
+  useEffect(() => {
+    const data = localStorage.getItem("address");
+    if (data) {
+      setAddress(JSON.parse(data));
+    }
+  }, []);
 
   // 🔥 selected payment
   const [selected, setSelected] = useState("");

@@ -22,7 +22,7 @@ const COUPONS: { [key: string]: number } = {
   SAVE20: 20,
 };
 
-// 🔥 NEW: Coupon offers list
+// 🔥 NEW: Coupon list UI
 const AVAILABLE_COUPONS = [
   { code: "FLAT50", discount: 50, desc: "Flat ₹50 OFF" },
   { code: "SAVE20", discount: 20, desc: "Save ₹20 instantly" },
@@ -56,7 +56,7 @@ export default function CheckoutPage() {
           <p className="text-gray-600 mb-4">Your cart is empty</p>
           <Button
             onClick={() => router.push("/home")}
-            className="bg-green-600 hover:bg-green-700 text-white"
+            className="bg-green-600 text-white"
           >
             Back to Shopping
           </Button>
@@ -184,7 +184,6 @@ export default function CheckoutPage() {
                     setCoupon(c.code);
                     setDiscount(c.discount);
                     setError("");
-                    toast.success("Coupon Applied 🎉");
                   }}
                   className="border p-3 rounded-lg cursor-pointer hover:bg-green-50 flex justify-between items-center"
                 >
